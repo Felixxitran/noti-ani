@@ -42,9 +42,9 @@ def update(cycle):
         t.start()
     frame = maid_chan_gif[cycle]
     cycle = gif_work(cycle,maid_chan_gif)
-    window.geometry('800x800+'+'1700'+'+1000')
+    window.geometry('800x800+'+'1700'+'-300')
     label.configure(image=frame)
-    window.after(500,update,cycle)
+    window.after(62,update,cycle)
 
 
 
@@ -52,6 +52,6 @@ def sound():
     playsound('maidchan_sound.wav')
 
 def run():
-    window.after(500,update,cycle)
+    window.after(62,update,cycle)
     window.mainloop()
 run()

@@ -32,7 +32,12 @@ window.config(highlightbackground='black')
 window.overrideredirect(True)
 window.wm_attributes("-topmost", True)
 window.wm_attributes("-disabled", True)
-window.wm_attributes('-transparentcolor','black')
+window.wm_attributes('-transparentcolor','#388004')
+
+# Turn off the window shadow
+
+# Set the root window background color to a transparent color
+
 label = tk.Label(window,bd=0,bg='black')
 label.pack()
 def gif_work(cycle,frames):

@@ -14,31 +14,32 @@ cycle = 0
 
 
 
-impath = 'maidchan.gif'
+impath = 'maid_chan.gif'
 maid_chan_gif =[]
 #setup window and gif construct
 window = tk.Tk()
-for i in range(0,75):
-    if i<10:
-        impath = "maidchan_gif_bmp\y2m00"+ str(i)+".bmp"
-    else:
-        impath = "maidchan_gif_bmp\y2m0"+ str(i)+".bmp"
-    image1 = Image.open(impath)
-    maid_chan_gif.append(ImageTk.PhotoImage(image1))
-# maid_chan_gif = [ImageTk.PhotoImage(file=impath,format = 'gif -index %i' %(i)) for i in range(30)]
+# for i in range(0,75):
+#     if i<10:
+#         impath = "maidchan_gif_bmp\y2m00"+ str(i)+".bmp"
+#     else:
+#         impath = "maidchan_gif_bmp\y2m0"+ str(i)+".bmp"
+#     image1 = Image.open(impath)
+#     maid_chan_gif.append(ImageTk.PhotoImage(image1))
+maid_chan_gif = [tk.PhotoImage(file=impath,format = 'gif -index %i' %(i)) for i in range(74)]
+# idle = [tk.PhotoImage(file=impath+'idle.gif',format = 'gif -index %i' %(i)) for i in range(5)]
 print(maid_chan_gif)
 #window configuration
 window.config(highlightbackground='black')
 window.overrideredirect(True)
 window.wm_attributes("-topmost", True)
-window.wm_attributes("-disabled", True)
-window.wm_attributes('-transparentcolor','#388004')
+# window.wm_attributes("-disabled", True)
+window.wm_attributes('-transparentcolor','white')
 
 # Turn off the window shadow
 
 # Set the root window background color to a transparent color
 
-label = tk.Label(window,bd=0,bg='black')
+label = tk.Label(window,bd=0)
 label.pack()
 def gif_work(cycle,frames):
  if cycle < len(frames) -1:

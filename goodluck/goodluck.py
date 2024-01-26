@@ -50,7 +50,7 @@ def update(cycle):
 
 
 def sound():
-    playsound('maidchan_sound.wav')
+    playsound('../maidchan_sound.wav')
 
 def run_maid_chan():
     window.after(61,update,cycle)

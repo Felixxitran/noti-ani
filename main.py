@@ -12,28 +12,31 @@ from PIL import Image, ImageTk
 
 cycle = 0
 
-
-
-impath = 'maid_chan.gif'
+impath = 'finalmaidchan.gif'
 maid_chan_gif =[]
 #setup window and gif construct
 window = tk.Tk()
-# for i in range(0,75):
-#     if i<10:
-#         impath = "maidchan_gif_bmp\y2m00"+ str(i)+".bmp"
-#     else:
-#         impath = "maidchan_gif_bmp\y2m0"+ str(i)+".bmp"
-#     image1 = Image.open(impath)
-#     maid_chan_gif.append(ImageTk.PhotoImage(image1))
-maid_chan_gif = [tk.PhotoImage(file=impath,format = 'gif -index %i' %(i)) for i in range(74)]
+for i in range(4,155):
+    if i<10:
+        impath = "finalmaidchan\photo000"+ str(i)+".bmp"
+    elif i<100:
+        impath = "finalmaidchan\photo00"+ str(i)+".bmp"
+    else:
+        impath = 'finalmaidchan\photo0'+ str(i)+".bmp"
+    image1 = Image.open(impath)
+    resized_image= image1.resize((800,500))
+    maid_chan_gif.append(ImageTk.PhotoImage(resized_image))
+# maid_chan_gif = [tk.PhotoImage(file=impath,format = 'gif -index %i' %(i)) for i in range(74)]
 # idle = [tk.PhotoImage(file=impath+'idle.gif',format = 'gif -index %i' %(i)) for i in range(5)]
+print('does not have maid chan yet ')
 print(maid_chan_gif)
+print('has already have maid chan gif')
 #window configuration
-window.config(highlightbackground='black')
+# window.config(highlightbackground='black')
 window.overrideredirect(True)
 window.wm_attributes("-topmost", True)
 # window.wm_attributes("-disabled", True)
-window.wm_attributes('-transparentcolor','white')
+window.wm_attributes('-transparentcolor','black')
 
 # Turn off the window shadow
 
@@ -49,24 +52,22 @@ def gif_work(cycle,frames):
  return cycle
 
 def update(cycle):
-    print(cycle)
-    if(cycle==74):
-        time.sleep(2)
     if cycle==1:
         t=threading.Timer(0.1,sound)
         t.start()
+    if(cycle==154):
+        time.sleep(0.1)
     frame = maid_chan_gif[cycle]
     cycle = gif_work(cycle,maid_chan_gif)
     window.geometry('800x800+'+'1700'+'+960')
     label.configure(image=frame)
-    window.after(20,update,cycle)
-
+    window.after(8,update,cycle)
 
 
 def sound():
-    playsound('maidchan_sound.wav')
+    playsound('finalmaidchan.wav')
 
 def run_maid_chan():
-    window.after(20,update,cycle)
+    window.after(10,update,cycle)
     window.mainloop()
 run_maid_chan()

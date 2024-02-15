@@ -3,12 +3,13 @@ print("this is shimeji")
 import random
 import tkinter as tk
 import pyautogui
-from playsound import playsound 
+
 import threading
 import time
 from sound import *
 from PIL import Image, ImageTk
-
+from pydub import AudioSegment
+from pydub.playback import play
 
 cycle = 0
 
@@ -38,8 +39,7 @@ def update(cycle):
     if(cycle==29):
         time.sleep(2)
     if cycle==1:
-        t=threading.Timer(0.1,sound)
-        t.start()
+        sound()
     frame = maid_chan_gif[cycle]
     cycle = gif_work(cycle,maid_chan_gif)
     window.geometry('800x800+'+'1700'+'+1000')
@@ -49,7 +49,9 @@ def update(cycle):
 
 
 def sound():
-    playsound('maidchan_sound.wav')
+    song = AudioSegment.from_wav("finalmaidchan.wav")
+    print('playing sound using  pydub')
+    play(song)
 
 def run_maid_chan():
     window.after(61,update,cycle)
